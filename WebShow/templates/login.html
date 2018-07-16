@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+
+<html lang="en-us" >
+<head>
+<title>实时监测</title>
+<link rel="stylesheet" type="text/css" href="/static/admin/css/base.css" />
+<link rel="stylesheet" type="text/css" href="/static/admin/css/login.css" />
+<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" type="text/css" href="/static/admin/css/responsive.css" />
+<script type="text/javascript" src="/static/jquery/js/jquery-3.2.1.min.js"></script>
+<meta name="robots" content="NONE,NOARCHIVE" />
+</head>
+
+<body class=" login"
+  data-admin-utc-offset="0">
+<!-- Container -->
+<div id="container">
+    <!-- Header -->
+    <div id="header">
+        <div id="branding">
+<h1 id="site-name">用户请登录</h1>
+        </div>
+    </div>
+    <!-- END Header -->
+    <!-- Content -->
+    <div id="content" class="colM">
+        <div id="content-main">
+            <form id="login-form">
+                <div class="form-row">
+                    <label class="required" for="id_username">用户名:</label> <input type="text" name="username" maxlength="254" id="id_username" required autofocus />
+                </div>
+                <div class="form-row">
+                <label class="required" for="id_password">密码:</label> <input type="password" name="password" id="id_password" required />
+                </div>
+                <div class="submit-row">
+                    <label>&nbsp;</label><input type="button" onclick="userlogin()" id="login" value="登录" />
+                </div>
+            </form>
+        </div>
+        <br class="clear" />
+    </div>
+    <!-- END Content -->
+    <div id="footer"></div>
+    </div>
+<!-- END Container -->
+    <script>
+        function userlogin(){
+            var username = $('#id_username').val()
+            var password = $('#id_password').val()
+            document.write('<form name="myForm"><input type="hidden" name="username"><input type="hidden" name="password"></form>');
+  	        var myForm=document.forms['myForm']
+  	        myForm.action="/userlogin/"
+            myForm.method='GET'
+  	        myForm.username.value=username
+  	        myForm.password.value=password
+  	        myForm.submit()
+            /*
+            if(username.length>0&&password.length>0)
+                $.ajax({
+                    type:"GET",
+                    dataType:"json",
+                    url:"/userlogin/",
+                    data:{username:username,password:password},
+                    success:function(){
+                        alert("登录成功")
+                    }
+                })
+                */
+        }
+
+    </script>
+</body>
+</html>

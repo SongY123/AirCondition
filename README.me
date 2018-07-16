@@ -1,0 +1,9 @@
+py -3 -m pip install django
+py -3 -m pip install flask
+
+py -3 manage.py makemigrations WebShow
+py -3 manage.py migrate
+//py -3 manage.py createsuperuser
+insert into webshow_user values(NULL,"songyang","songyang",1);
+insert into webshow_pm25 values(NULL,100,10,10,"2018-07-13");
+python manage.py runserver 0.0.0.0:8000
